@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th>ID</th>
+        <th>PHONE NO</th>
+        <th>MESSAGE</th>
+        <th>TIME</th>
+        <th></th>
+    </tr>
+    </thead>
+    {% if msgs %}
+    {% for msg in msgs %}
+    <tbody>
+    <tr>
+<!-- using loop.index instead of msg.ID, because i don't want the ID of the messages in the database to display, i just want a simple numbering -->
+        <td>{{ loop.index }}</td>
+        <td>{{ msg.receiver }}</td>
+        <td>{{ msg.body }}</td>
+        <td>{{ moment(msg.time_sent).format('LLL') }}</td>
+        <td><form action="{{ url_for('delete', ID=msg.id) }}" method="post">
+            <input type="submit" value="Delete" class="btn">
+        </form></td>
+    </tr>
+    </tbody>
+    {% endfor %}
+    {% endif %}
+</table>
+
+{% endblock %}
+

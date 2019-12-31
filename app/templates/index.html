@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class="container">
+    <form method="post">
+        <div class="form-group">
+            <label>Sender ID</label>
+            <input name="sender" type="text" class="form-control" value="{{ senderID }}">
+        </div>
+        <br><hr>
+        <div class="form-group">
+            <label>Phone Number</label>
+            <input name="phoneNumber" type="text" class="form-control" id="phoneNumber" placeholder="Enter Phone Numner" required>
+        </div>
+        <div class="form-group">
+            <label>SMS Message</label>
+            <input name="smsMessage" type="text" class="form-control"  placeholder="Enter SMS Message" required>
+        </div>
+        <button type="submit" class="btn btn-primary">SEND</button>
+    </form>
+</div>
+
+
+{% endblock %}
